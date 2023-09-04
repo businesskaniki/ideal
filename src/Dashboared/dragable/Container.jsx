@@ -1,6 +1,5 @@
 import { useCallback, useState } from 'react'
 import { FileList } from './FileList.jsx'
-import { TargetBox } from './TargetBox.jsx'
 export const Container = () => {
   const [droppedFiles, setDroppedFiles] = useState([])
   const handleFileDrop = useCallback(
@@ -13,9 +12,8 @@ export const Container = () => {
     [setDroppedFiles],
   )
   return (
-    <>
-      <TargetBox onDrop={handleFileDrop} />
+    <div>
       <FileList files={droppedFiles} />
-    </>
+    </div>
   )
 }
