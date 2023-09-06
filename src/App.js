@@ -1,15 +1,15 @@
 import React from 'react'
-import { DndProvider } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
-import { Container } from './Dashboared/dragable/Container'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+import Nav from './components/Nav';
 
 
 const App = () => {
   return (
     <div className="App">
-    <DndProvider backend={HTML5Backend}>
-      <Container />
-    </DndProvider>
+      <Router>
+      <Nav />
+      </Router>
   </div>
   )
 }
