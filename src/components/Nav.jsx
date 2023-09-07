@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 import "./nav.scss";
 
 const Nav = () => {
@@ -20,36 +20,27 @@ const Nav = () => {
   return (
     <header>
       <nav class="navbar container">
-        <NavLink>
-        ideal media productions
-        </NavLink>
+        <NavLink>ideal media productions</NavLink>
         <div class="navbar__menu">
           <ul class="navbar__list">
-            <li class="navbar__list-drop">
-              <NavLink>
-                Home
-              </NavLink>
-            </li>
-            <li class="navbar__list-drop">
-              <NavLink>
-                Gallery
-  
-              </NavLink>
-            </li>
             <li>
-              <NavLink>Careers</NavLink>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <NavLink>About</NavLink>
             </li>
             <li>
-              <NavLink>Dashboard</NavLink>
+              <NavLink>Contact</NavLink>
+            </li>
+            <li>
+              <NavLink exact to="/gallery">Gallery</NavLink>
+            </li>
+            <li>
+              <NavLink to={"/dashboard"}>Dashboard</NavLink>
             </li>
           </ul>
           <div class="navbar__buttons">
-            <NavLink class="navbar__buttons-login" >
-              Login
-            </NavLink>
+            <NavLink class="navbar__buttons-login">Login</NavLink>
             <button class="navbar__buttons-register" href="#">
               Register
             </button>
