@@ -1,28 +1,42 @@
 import React, { useEffect } from "react";
-import { NavLink,Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import "./nav.scss";
 
 const Nav = () => {
+  const location = useLocation();
+
   useEffect(() => {
-    // Get DOM elements after the component has rendered
-    const menu = document.querySelector("#menu-icon");
-    const navbar = document.querySelector(".navbar__menu");
+    // Wrap your code inside a DOMContentLoaded event listener
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get DOM elements after the component has rendered
+      const menu = document.querySelector("#menu-icon");
+      const navbar = document.querySelector(".navbar__menu");
 
-    // Add a click event listener to the menu
-    menu.onclick = () => {
-      menu.classList.toggle("active");
-      navbar.classList.toggle("right-open");
+      // Add a click event listener to the menu
+      menu.onclick = () => {
+        menu.classList.toggle("active");
+        navbar.classList.toggle("right-open");
+      };
+    });
+
+    // Clean up the event listeners when the component unmounts
+    return () => {
+      const menu = document.querySelector("#menu-icon");
+      if (menu) {
+        // menu.removeEventListener("click", handleMenuClick);
+      }
     };
-
-    // Clean up the event listeners when the component unmount
   }, []);
 
-  return (
+  // Conditionally render the navigation bar based on the current route
+  const shouldShowNav = location.pathname !== "/dashboard";
+
+  return shouldShowNav ? (
     <header>
-      <nav class="navbar container">
+      <nav className="navbar container">
         <NavLink>ideal media productions</NavLink>
-        <div class="navbar__menu">
-          <ul class="navbar__list">
+        <div className="navbar__menu">
+          <ul className="navbar__list">
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -36,26 +50,26 @@ const Nav = () => {
               <NavLink exact to="/gallery">Gallery</NavLink>
             </li>
             <li>
-              <NavLink to={"/dashboard"}>Dashboard</NavLink>
+              <NavLink to="/dashboard">Dashboard</NavLink>
             </li>
           </ul>
-          <div class="navbar__buttons">
-            <NavLink class="navbar__buttons-login">Login</NavLink>
-            <button class="navbar__buttons-register" href="#">
+          <div className="navbar__buttons">
+            <NavLink className="navbar__buttons-login">Login</NavLink>
+            <button className="navbar__buttons-register" href="#">
               Register
             </button>
           </div>
         </div>
-        <div class="demo">
-          <div id="menu-icon" class="menu">
-            <span class="bar1"></span>
-            <span class="bar2"></span>
-            <span class="bar3"></span>
+        <div className="demo">
+          <div id="menu-icon" className="menu">
+            <span className="bar1"></span>
+            <span className="bar2"></span>
+            <span className="bar3"></span>
           </div>
         </div>
       </nav>
     </header>
-  );
+  ) : null;
 };
 
 export default Nav;

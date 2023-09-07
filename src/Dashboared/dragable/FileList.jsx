@@ -1,38 +1,75 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import "./FileList.css"; // Import a CSS file for your component's styles
 
 export const FileList = () => {
   const [droppedFiles, setDroppedFiles] = useState([]);
-  const [imageUrls, setImageUrls] = useState([]);
+  const [mediaPreviews, setMediaPreviews] = useState([]);
 
   const handleDrop = (event) => {
     event.preventDefault();
     const newFiles = [...droppedFiles];
-    for (let i = 0; i < event.dataTransfer.files.length; i++) {
-      newFiles.push(event.dataTransfer.files[i]);
-    }
-    setDroppedFiles(newFiles);
+    const newPreviews = [...mediaPreviews];
 
-    const newImageUrls = [...imageUrls];
     for (let i = 0; i < event.dataTransfer.files.length; i++) {
-      const imageUrl = event.dataTransfer.files[i].name;
-      newImageUrls.push(imageUrl);
-      console.log("Image URL:", imageUrl); // Log the image URL
+      const file = event.dataTransfer.files[i];
+      newFiles.push(file);
+
+      if (file.type.startsWith("image/")) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          newPreviews.push({
+            type: "image",
+            preview: e.target.result,
+            file: file,
+          });
+          setMediaPreviews(newPreviews);
+        };
+        reader.readAsDataURL(file);
+      } else if (file.type.startsWith("video/")) {
+        newPreviews.push({
+          type: "video",
+          file: file,
+        });
+        setMediaPreviews(newPreviews);
+      }
     }
-    setImageUrls(newImageUrls);
+
+    setDroppedFiles(newFiles);
+  };
+
+  const handleRemoveMedia = (index) => {
+    const newPreviews = [...mediaPreviews];
+    newPreviews.splice(index, 1);
+    setMediaPreviews(newPreviews);
+
+    const newFiles = [...droppedFiles];
+    newFiles.splice(index, 1);
+    setDroppedFiles(newFiles);
   };
 
   const handleDragOver = (event) => {
     event.preventDefault();
   };
 
-  const renderImages = () => {
-    return imageUrls.map((imageUrl, index) => (
-      <img
-        key={index}
-        src={imageUrl}
-        alt={`Preview ${droppedFiles[index].name}`}
-        style={{ maxWidth: "100px", maxHeight: "100px" }}
-      />
+  const renderMedia = () => {
+    return mediaPreviews.map((media, index) => (
+      <div key={index} className="media-container">
+        {media.type === "image" ? (
+          <img
+            src={media.preview}
+            alt={`Preview ${media.file.name}`}
+            className="media"
+          />
+        ) : (
+          <video controls width="100" height="100">
+            <source src={URL.createObjectURL(media.file)} type={media.file.type} />
+            Your browser does not support the video tag.
+          </video>
+        )}
+        <button onClick={() => handleRemoveMedia(index)} className="remove-button">
+          Remove
+        </button>
+      </div>
     ));
   };
 
@@ -41,24 +78,11 @@ export const FileList = () => {
       <div
         onDrop={handleDrop}
         onDragOver={handleDragOver}
-        style={{
-          border: "2px dashed #cccccc",
-          padding: "20px",
-          textAlign: "center",
-          width: "300px", // Adjust the width as needed
-          height: "300px", // Adjust the height as needed
-          background: "black", // Set the background color to black
-          overflow: "auto", // Enable scroll if too many images are dropped
-        }}
+        className="dropzone"
       >
-
-          <div style={{ color: "white" }}>Drag and drop photos here</div>
-          
+        <div className="dropzone-text">Drag and drop photos and videos here</div>
       </div>
-      {
-          renderImages()
-
-      }
+      <div className="media-preview-container">{renderMedia()}</div>
     </div>
   );
 };

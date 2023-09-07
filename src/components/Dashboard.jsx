@@ -1,8 +1,16 @@
-import React from 'react'
+import React from 'react';
+import DashNav from '../Dashboared/mainDashboaed/DashNav';
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div>
+      <div>
+        <DashNav />
+      </div>
+      <div>
+
+      </div>
+    </div>
   )
 }
 
