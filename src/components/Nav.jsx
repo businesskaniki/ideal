@@ -54,9 +54,9 @@ const Nav = () => {
             </li>
           </ul>
           <div className="navbar__buttons">
-            <NavLink className="navbar__buttons-login">Login</NavLink>
-            <button className="navbar__buttons-register" href="#">
-              Register
+            <NavLink to="/login" className="navbar__buttons-login">Login</NavLink>
+            <button className="navbar__buttons-register">
+             <NavLink to="/register"> Register</NavLink>
             </button>
           </div>
         </div>

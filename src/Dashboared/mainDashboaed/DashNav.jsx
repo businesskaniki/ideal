@@ -202,7 +202,6 @@ const DashNav = () => {
         </Button>
         <SidebarContainer>
           <Logo>
-            <h2>IDM</h2>
           </Logo>
           <SlickBar clicked={click}>
             <Item

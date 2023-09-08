@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./FileList.css"; // Import a CSS file for your component's styles
+import { BsTrash } from "react-icons/bs";
 
 export const FileList = () => {
   const [droppedFiles, setDroppedFiles] = useState([]);
@@ -66,9 +67,9 @@ export const FileList = () => {
             Your browser does not support the video tag.
           </video>
         )}
-        <button onClick={() => handleRemoveMedia(index)} className="remove-button">
+        <BsTrash onClick={() => handleRemoveMedia(index)} className="remove-button">
           Remove
-        </button>
+        </BsTrash>
       </div>
     ));
   };
