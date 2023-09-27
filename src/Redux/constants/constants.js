@@ -1,0 +1,13 @@
+export const BASEURL = " http://127.0.0.1:8000/";
+export const FETCH_IMAGES = "images/images/FETCH_IMAGGES";
+export const ADD_IMAGE = "images/images/ADD_IMAGES";
+export const FETCH_IMAGE = "image/image/FETCH_IMAGE";
+export const DELETE_IMAGE = "image/image/DELETE_IMAGE";
+export const UDPDATE_IMAGE = "image/image/UPDATE_IMAGE";
+export const REMOVEIMAGE = "images/images/REMOVEIMAGE";
+export const ADD_TAG = "tag/tag/ADD_TAG";
+export const FETCH_TAGS = "tags/tags/FETCH_TAGS";
+export const FETCH_TAG = "tag/tag/FETCH_TAG"
+export const DELETE_TAG = "tag/tag/DELETE_TAG";
+export const UDPDATE_TAG = "tag/tag/UPDATE_TAG";
+export const REMOVETAG = "tag/tag/REMOVETAG";

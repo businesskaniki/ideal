@@ -1,0 +1,23 @@
+.home-container {
+  background-color: #e4e4e4;
+  height: 100vh;
+  padding-top: 120px;
+}
+
+.about-container {
+  background-color: #d52978;
+  height: 60vh;
+}
+
+.home-wraper {
+  padding: 2%kaclea 10%;
+}
+
+.contact-container {
+  background-color: #ac84bc;
+  height: 50vh;
+}
+
+.welcome-text {
+  color: #21130d;
+}
