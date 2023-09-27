@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import { Link } from "react-scroll";
 import "./nav.scss";
+import logo from "../Assets/ideal.png"
 
 const Nav = () => {
   const location = useLocation();
-
+  
   useEffect(() => {
     // Wrap your code inside a DOMContentLoaded event listener
     document.addEventListener("DOMContentLoaded", function () {
@@ -34,17 +36,17 @@ const Nav = () => {
   return shouldShowNav ? (
     <header>
       <nav className="navbar container">
-        <NavLink>ideal media productions</NavLink>
+        <NavLink><img className="logo" src={logo} alt="ideal media" /></NavLink>
         <div className="navbar__menu">
           <ul className="navbar__list">
             <li>
-              <Link to="/">Home</Link>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink>About</NavLink>
+              <NavLink to="about" smooth={true} duration={500}>About</NavLink>
             </li>
             <li>
-              <NavLink>Contact</NavLink>
+              <Link to="#contact">Contact</Link>
             </li>
             <li>
               <NavLink exact to="/gallery">Gallery</NavLink>

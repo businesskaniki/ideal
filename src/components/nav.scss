@@ -17,12 +17,15 @@
 }
 
 :root {
-  --theme-light-color: hsl(0, 0%, 98%);
+  --theme-light-color:#e4e4e4;
   --theme-dark-color: hsl(0, 0%, 8%);
   --text-gray-color: hsl(0, 0%, 41%);
   --body-font: "Epilogue", sans-serif;
 }
 
+.logo {
+  width: 150px;
+}
 
 img {
   width: 100%;
@@ -53,6 +56,7 @@ ul {
 }
 
 header {
+  position: fixed;
   width: 100%;
   top: 0;
   right: 0;
@@ -66,6 +70,8 @@ header {
   align-items: center;
   padding: 1rem;
   transition: all 0.5s ease;
+  height: 15vh;
+
 
   &__menu {
     flex-grow: 1;

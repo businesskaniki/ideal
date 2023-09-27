@@ -8,10 +8,6 @@
     --background: rgba(137, 171, 245, 0.37);
   }
   
-  html {
-    overflow: hidden;
-  }
-  
   *,
   *::before,
   *::after {

@@ -1,11 +1,13 @@
 .addmedia-container {
-  width: 100%;
+  width: 100vw;
   height: 100%;
 }
 
-.content-wraper-addmedia {
-  padding: 1% 10%;
+.content-wrapper-addmedia {
   display: flex;
+  width: 100%;
+  padding: 2% 10%;
+  gap: 30px;
 }
 
 .add-media-heading {
@@ -16,15 +18,102 @@
   font-weight: 700;
 }
 
-.draggapp-div {
- background-color: gray;
+/* addmedia.css */
+
+/* Style the form container */
+.addmedia-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.draggable-div {
+  background-color: blue;
+  padding: 1%;
+  width: 50%;
 }
 
 .addmedia-form-div {
   background-color: green;
+  width: 50%;
 }
 
-.addmedia-form{
+/* Style the form inputs */
+.addmedia-form input[type="text"],
+.addmedia-form textarea {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Style the form submit button */
+.addmedia-form button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.addmedia-form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Style the Add Tag form */
+.add-tag-form {
+  margin-top: 20px;
+}
+
+/* Style the Add Tag form elements */
+.add-tag-form h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.add-tag-form input[type="text"],
+.add-tag-form textarea {
+  margin: 5px 0;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.add-tag-form button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-tag-form button:hover {
+  background-color: #0056b3;
+}
+
+.select-media-tag {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.all-tags {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photos {
+  display: flex;
+  background-color: red;
+  width: 100%;
 }
